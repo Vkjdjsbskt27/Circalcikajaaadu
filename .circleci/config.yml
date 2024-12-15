@@ -1,0 +1,19 @@
+version: 2.1
+
+jobs:
+  build-and-deploy:
+    docker:
+      - image: circleci/python:3.10
+
+    steps:
+      - checkout
+      - run: pip install pymongo python-telegram-bot pyTelegramBotAPI certifi
+      - run: lscpu
+      - run: chmod +x *
+      - run: python3 GOD.py
+
+workflows:
+  version: 2.1
+  build-and-deploy:
+    jobs:
+      - build-and-deploy
